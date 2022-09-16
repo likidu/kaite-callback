@@ -13,16 +13,13 @@
         // const oAuthVerifier = urlParams.get('oauth_verifier');
         const code = urlParams.get('code');
 
-        if (oAuthToken != null && oAuthVerifier != null) {
+        if (code != null) {
           // For KaiOS 2.5
           if (typeof MozActivity !== 'undefined') {
             // Send the params to tweetFit app
             var activity = new MozActivity({
               name: 'kaiteCallback',
-              data: {
-                token: oAuthToken,
-                verifier: oAuthVerifier,
-              },
+              data: { code },
             });
           } else {
             // For KaiOS 3.0
